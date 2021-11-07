@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .models import Profile
+from .models import CashFlow
 
-class ProfileSerializer(serializers.ModelSerializer):
+class CashFlowSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Profile
-        fields = ('pk', 'user', 'email', 'image')
+        model = CashFlow
+        fields = ('id', 'month', 'income', 'date_created')

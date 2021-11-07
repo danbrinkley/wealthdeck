@@ -13,6 +13,10 @@ class Profile(models.Model):
         return self.user.username   
 
 class CashFlow(models.Model):
+    month = models.CharField(max_length=10)
     income = models.CharField(max_length=100)
     date_created = models.DateTimeField( auto_now_add=True)
     profile = models.ForeignKey(Profile, on_delete = models.CASCADE, related_name="cashflow")
+
+    def __str__(self):
+        return self.month

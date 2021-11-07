@@ -5,11 +5,8 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
-from rest_framework import status
-
-from .models import Profile
+from rest_framework import viewsets
+from .models import Profile, CashFlow
 from .serializers import *
 
 
@@ -62,3 +59,6 @@ class Signup(View):
 
 
 
+class CashFlowView(viewsets.ModelViewSet):
+    serializer_class = CashFlowSerializer
+    queryset = CashFlow.objects.all()
