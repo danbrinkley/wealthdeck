@@ -1,0 +1,57 @@
+
+.landing-ctr {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    padding-top: 10%;
+    display: flex;
+    justify-content:center;
+    min-width: 500px;
+}
+
+.logo {
+    width: 100%;
+    height: auto;
+}
+
+.login-btn {
+    position: absolute;
+    top: 90%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    padding: 8px 32px;
+    cursor: pointer;
+    border: 1px solid white;
+    text-align: center;
+}
+
+.signup-btn {
+    position: absolute;
+    top: 90%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    padding: 8px 26px;
+    border: 1px solid white;
+    cursor: pointer;
+    text-align: center;
+}
+
+.login-pop-ctr {
+    border: 1px solid black;
+    
+}
+.login-form-ctr {
+    width: 300px;
+}
+.login-formr-ctr > input {
+    padding: 60px;
+}

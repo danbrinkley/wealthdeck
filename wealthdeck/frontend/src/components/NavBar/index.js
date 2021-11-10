@@ -12,15 +12,25 @@ import {
 } from "react-pro-sidebar";
 
 //import icons from react icons
-import { FaList, FaRegHeart } from "react-icons/fa";
+import { FaMoneyCheck, FaRegHeart } from "react-icons/fa";
 import { FiHome, FiLogOut, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 import { RiPencilLine } from "react-icons/ri";
 import { BiCog } from "react-icons/bi";
+import { GoGraph } from "react-icons/go";
+import { RiBriefcase3Fill } from "react-icons/ri";
+import { MdAttachMoney } from "react-icons/md";
+
+
+
+
 
 
 //import sidebar css from react-pro-sidebar module and our custom css 
 import "react-pro-sidebar/dist/css/styles.css";
 import "./navbar.css";
+import UserPic from './UserPic'
+import { Link } from "react-router-dom"
+import logo from '../../images/logo.png'
 
 
 const NavBar = () => {
@@ -35,6 +45,7 @@ const NavBar = () => {
   };
 
   return (
+    
     <>
       <div id="header">
           {/* collapsed props to change menu size using menucollapse state */}
@@ -42,7 +53,7 @@ const NavBar = () => {
           <SidebarHeader>
           <div className="logotext">
               {/* small and big change using menucollapse state */}
-              <p>{menuCollapse ? "Logo" : "Big Logo"}</p>
+              <UserPic />
             </div>
             <div className="closemenu" onClick={menuIconClick}>
                 {/* changing menu collapse icon on click */}
@@ -54,14 +65,16 @@ const NavBar = () => {
             </div>
           </SidebarHeader>
           <SidebarContent>
+
             <Menu iconShape="square">
-              <MenuItem active={true} icon={<FiHome />}>
-                Home
+              <MenuItem active={true} icon={<GoGraph size={30} />}><Link to='/dashboard'>
+                Dashboard
+                </Link>
               </MenuItem>
-              <MenuItem icon={<FaList />}>Category</MenuItem>
-              <MenuItem icon={<FaRegHeart />}>Favourite</MenuItem>
-              <MenuItem icon={<RiPencilLine />}>Author</MenuItem>
-              <MenuItem icon={<BiCog />}>Settings</MenuItem>
+              <MenuItem icon={<MdAttachMoney size={80} />}><Link to='/income'>Income</Link></MenuItem>
+              <MenuItem icon={<FaMoneyCheck size={30} />}><Link to='/assets'>Assets</Link></MenuItem>
+              <MenuItem icon={<RiBriefcase3Fill size={50} />}><Link to='/liabilities'>Liabilites</Link></MenuItem>
+              <img src={logo} className="side-logo" alt="sidebar logo" />
             </Menu>
           </SidebarContent>
           <SidebarFooter>
