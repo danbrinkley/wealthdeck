@@ -16,6 +16,24 @@
 }
 
 .main-container {
+    display: flex;
+    flex-direction: column;
     width: 80%;
     border: 1px solid red;
 }
+
+.main-row1-ctr {
+    display: flex;
+    width: 100%;
+    border: 1px solid blue;
+    height: 50%;
+}
+.main-row2-ctr {
+    display: flex;
+    width: 100%;
+    border: 1px solid blue;
+    height: 50%;
+}
+
+
+

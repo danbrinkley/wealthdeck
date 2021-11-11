@@ -17,7 +17,7 @@ class Test extends React.Component{
               {
                   this.state.show? <div><LoginForm /></div> : null
               }
-              <button onClick={()=>{this.setState({show:!this.state.show})}}> Login</button>
+              <button onClick={()=>{this.setState({show:!this.state.show})}}> </button>
           </div>
         </header>
       </div>
