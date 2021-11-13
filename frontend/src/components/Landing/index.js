@@ -1,6 +1,6 @@
 import React from 'react'
 import Logo from './Logo'
-import LoginForm from './LoginForm'
+import Login from './LoginForm'
 import './landing.css'
 import Signup from './Signup';
 
@@ -18,7 +18,7 @@ return (
             <Logo />
             <div className="login-pop-ctr">
               {
-                  this.state.show? <div><LoginForm /></div> : null
+                  this.state.show? <div><Login /></div> : null
               }
                 <button 
                 className="login-btn" 

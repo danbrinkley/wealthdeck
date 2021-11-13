@@ -1,8 +1,13 @@
 import React from 'react'
 import {render} from 'react-dom'
+import {BrowserRouter} from 'react-router-dom'
 import App from './App';
 
-render(<App  />, document.getElementById('root'));
+render((
+    <BrowserRouter>
+        <App  />
+    </BrowserRouter>
+), document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

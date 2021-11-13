@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from "react";
+import './landing.css'
 
 
-const LoginForm = () => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState(false);
@@ -9,7 +10,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (localStorage.getItem('token') !== null) {
-      window.location.replace('http://localhost:3000/dashboard');
+      window.location.replace('http://localhost:8000/dashboard');
     } else {
       setLoading(false);
     }
@@ -35,7 +36,7 @@ const LoginForm = () => {
         if (data.key) {
           localStorage.clear();
           localStorage.setItem('token', data.key);
-          window.location.replace('http://localhost:3000/dashboard');
+          window.location.replace('http://localhost:8000/dashboard');
         } else {
           setEmail('');
           setPassword('');
@@ -69,11 +70,13 @@ const LoginForm = () => {
             onChange={e => setPassword(e.target.value)}
           />{' '}
           <br />
-          <input type='submit' value='Login' />
+          <button className="login-btn" onClick={onSubmit}>
+        LOGIN
+      </button>
         </form>
       )}
     </div>
   );
 };
   
-  export default LoginForm;
+  export default Login;

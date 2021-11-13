@@ -1,5 +1,5 @@
 import React from 'react'
-import profilepic from '../../images/profilepic.jpg'
+import profilepic from '../images/profilepic.jpg'
 import './navbar.css'
 
 

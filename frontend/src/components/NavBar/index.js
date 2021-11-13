@@ -30,7 +30,7 @@ import "react-pro-sidebar/dist/css/styles.css";
 import "./navbar.css";
 import UserPic from './UserPic'
 import { Link } from "react-router-dom"
-import logo from '../../images/logo.png'
+import logo from '../images/logo.png'
 
 
 const NavBar = () => {

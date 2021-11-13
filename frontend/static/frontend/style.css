@@ -5,3 +5,7 @@ h1 {
 .test-header {
     color: green
 }
+
+.app {
+    border: 1px solid gold;
+}
