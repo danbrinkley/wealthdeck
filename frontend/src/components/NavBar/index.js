@@ -57,8 +57,7 @@ const NavBar = () => {
     <>
       <div id="header">
           {/* collapsed props to change menu size using menucollapse state */}
-    {isAuth === true ? (
-      <Fragment>
+   
         <ProSidebar collapsed={menuCollapse}>
           <SidebarHeader>
           <div className="logotext">
@@ -93,44 +92,7 @@ const NavBar = () => {
             </Menu>
           </SidebarFooter> 
         </ProSidebar>
-      </Fragment>
-          ) : (
-      <Fragment>
-              {' '}
-              <ProSidebar collapsed={menuCollapse}>
-          <SidebarHeader>
-          <div className="logotext">
-              {/* small and big change using menucollapse state */}
-              <img src={logo} className="side-logo" alt="sidebar logo" />
-            </div>
-            <div className="closemenu" onClick={menuIconClick}>
-                {/* changing menu collapse icon on click */}
-              {menuCollapse ? (
-                <FiArrowRightCircle/>
-              ) : (
-                <FiArrowLeftCircle/>
-              )}
-            </div>
-          </SidebarHeader>
-          <SidebarContent>
-              {' '}
-            <Menu iconShape="square">
-              <MenuItem active={true} icon={<GoGraph size={30} />}><Link to='/login'>
-                Login
-                </Link>
-              </MenuItem>
-              <MenuItem icon={<MdAttachMoney size={80} />}><Link to='/signup'>Signup</Link></MenuItem>
- 
-            </Menu>
-          </SidebarContent>
-          {/* <SidebarFooter>
-            <Menu iconShape="square">
-              <MenuItem icon={<FiLogOut />}>Logout</MenuItem>
-            </Menu>
-          </SidebarFooter>  */}
-        </ProSidebar>
-      </Fragment>
-          )}
+     
       </div>
     </>
   );

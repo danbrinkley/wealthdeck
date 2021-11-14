@@ -1,6 +1,6 @@
 import React from 'react'
 import Logo from './Logo'
-import Login from './LoginForm'
+import Login from './Login'
 import './landing.css'
 import Signup from './Signup';
 

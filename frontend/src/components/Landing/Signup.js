@@ -1,88 +1,66 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from "react";
+import axiosInstance from "../../axiosApi";
 
-const Signup = () => {
-  const [email, setEmail] = useState('');
-  const [password1, setPassword1] = useState('');
-  const [password2, setPassword2] = useState('');
-  const [errors, setErrors] = useState(false);
-  const [loading, setLoading] = useState(true);
+class Signup extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            username: "",
+            password: "",
+            email:"",
+            errors:{}
+        };
 
-  useEffect(() => {
-    if (localStorage.getItem('token') !== null) {
-      window.location.replace('http://localhost:3000/dashboard');
-    } else {
-      setLoading(false);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
-  }, []);
 
-  const onSubmit = e => {
-    e.preventDefault();
+    handleChange(event) {
+        this.setState({[event.target.name]: event.target.value});
+    }
 
-    const user = {
-      email: email,
-      password1: password1,
-      password2: password2
-    };
-
-    fetch('http://127.0.0.1:8000/api/v1/main_app/auth/register/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(user)
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.key) {
-          localStorage.clear();
-          localStorage.setItem('token', data.key);
-          window.location.replace('http://localhost:3000/dashboard');
-        } else {
-          setEmail('');
-          setPassword1('');
-          setPassword2('');
-          localStorage.clear();
-          setErrors(true);
+    async handleSubmit(event) {
+        event.preventDefault();
+        try {
+            const response = await axiosInstance.post('/user/create/', {
+                username: this.state.username,
+                email: this.state.email,
+                password: this.state.password
+            });
+            return response;
+        } catch (error) {
+            console.log(error.stack);
+            this.setState({
+                errors:error.response.data
+            });
         }
-      });
-  };
+    }
 
-  return (
-    <div>
-      {loading === false && <h1>Signup</h1>}
-      {errors === true && <h2>Cannot signup with provided credentials</h2>}
-      <form onSubmit={onSubmit}>
-        <label htmlFor='email'>Email address:</label> <br />
-        <input
-          name='email'
-          type='email'
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          required
-        />{' '}
-        <br />
-        <label htmlFor='password1'>Password:</label> <br />
-        <input
-          name='password1'
-          type='password'
-          value={password1}
-          onChange={e => setPassword1(e.target.value)}
-          required
-        />{' '}
-        <br />
-        <label htmlFor='password2'>Confirm password:</label> <br />
-        <input
-          name='password2'
-          type='password'
-          value={password2}
-          onChange={e => setPassword2(e.target.value)}
-          required
-        />{' '}
-        <br />
-        <input type='submit' value='Signup' />
-      </form>
-    </div>
-  );
-};
+    render() {
+        return (
+            <div>
+                Signup
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        Username:
+                        <input name="username" type="text" value={this.state.username} onChange={this.handleChange}/>
+                        { this.state.errors.username ? this.state.errors.username : null}
+                    </label>
+                    <label>
+                        Email:
+                        <input name="email" type="email" value={this.state.email} onChange={this.handleChange}/>
+                        { this.state.errors.email ? this.state.errors.email : null}
+                    </label>
+                    <label>
+                        Password:
+                        <input name="password" type="password" value={this.state.password} onChange={this.handleChange}/>
+                        { this.state.errors.password ? this.state.errors.password : null}
+                    </label>
+                    <input type="submit" value="Submit"/>
+                </form>
+            </div>
+        )
+    }
+}
 
 export default Signup;
