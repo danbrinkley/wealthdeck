@@ -1,5 +1,13 @@
 .performance-ctr {
-    width: 60%;
-    border: 1px solid green;
-    height: 100%;
+  padding-left: 10px;
+  padding-bottom: 30px;
+  padding-top: 0px;
+  width: 65%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+  height: 90%;
+  margin: 10px;
+}
+
+.performance-ctr > h3 {
+  margin-bottom: 0px;
 }

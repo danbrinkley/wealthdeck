@@ -1,5 +1,14 @@
 .income-ctr {
-    width: 33%;
-    border: 1px solid gold;
-    height: 100%;
+  /* border: 1px solid gold; */
+  height: 90%;
+  padding-left: 10px;
+  padding-bottom: 30px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+  margin: 10px;
+  width: 33%;
+}
+
+.income-ctr > h3 {
+  padding-left: 15px;
+  margin-bottom: 0px;
 }

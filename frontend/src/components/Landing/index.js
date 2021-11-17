@@ -1,42 +1,63 @@
-import React from 'react'
-import Logo from './Logo'
-import Login from './Login'
-import './landing.css'
-import Signup from './Signup';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  NavLink,
+  Link
+} from "react-router-dom";
 
+import Signup from "./Signup";
+import "./landing.css";
 
-class Landing extends React.Component {
-    constructor() {
-        super();
-        this.state={
-            show:false
-        }
-    }
-render() {
-return (
-        <div className="landing-ctr">
-            <Logo />
-            <div className="login-pop-ctr">
-              {
-                  this.state.show? <div><Login /></div> : null
-              }
-                <button 
-                className="login-btn" 
-                onClick={()=>{this.setState({show:!this.state.show})}}>
-                Login
-                </button>
-                </div>
-                {
-                  this.state.show? <div><Signup /></div> : null
-              }
-                 <button className="signup-btn"
-                 onClick={()=>{this.setState({show:!this.state.show})}}>
-                 Sign-up
-                </button>
-            
+const Landing = () => {
+  return (
+    <div className="App">
+      <div className="appAside" />
+      <div className="appForm">
+        <div className="pageSwitcher">
+          <NavLink
+            to="/login"
+            activeClassName="pageSwitcherItem-active"
+            className="pageSwitcherItem"
+          >
+            Log In
+          </NavLink>
+          <NavLink
+            exact
+            to="/signup"
+            activeClassName="pageSwitcherItem-active"
+            className="pageSwitcherItem"
+          >
+            Sign Up
+          </NavLink>
         </div>
-        )   
-     }
-}
 
-export default Landing
+        <div className="formTitle">
+          <NavLink
+            to="/login"
+            activeClassName="formTitleLink-active"
+            className="formTitleLink"
+          >
+            Log In
+          </NavLink>{" "}
+          or{" "}
+          <NavLink
+            exact
+            to="/signup"
+            activeClassName="formTitleLink-active"
+            className="formTitleLink"
+          >
+            Sign Up
+          </NavLink>
+          <Link to={"/dashboard"}>Dashboard</Link>
+        </div>
+        <Routes>
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </div>
+    </div>
+  );
+};
+
+export default Landing;

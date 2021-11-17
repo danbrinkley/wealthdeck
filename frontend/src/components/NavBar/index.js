@@ -1,6 +1,6 @@
 //import useState hook to create menu collapse state
 import React, { useState, useEffect, Fragment } from "react";
-
+import { IconContext } from "react-icons";
 //import react pro sidebar components
 import {
   ProSidebar,
@@ -8,37 +8,34 @@ import {
   MenuItem,
   SidebarHeader,
   SidebarFooter,
-  SidebarContent,
+  SidebarContent
 } from "react-pro-sidebar";
 
 //import icons from react icons
 import { FaMoneyCheck, FaRegHeart } from "react-icons/fa";
-import { FiHome, FiLogOut, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
+import {
+  FiHome,
+  FiLogOut,
+  FiArrowLeftCircle,
+  FiArrowRightCircle
+} from "react-icons/fi";
 import { RiPencilLine } from "react-icons/ri";
-import { BiCog } from "react-icons/bi";
 import { GoGraph } from "react-icons/go";
 import { RiBriefcase3Fill } from "react-icons/ri";
 import { MdAttachMoney } from "react-icons/md";
 
-
-
-
-
-
-//import sidebar css from react-pro-sidebar module and our custom css 
+//import sidebar css from react-pro-sidebar module and our custom css
 import "react-pro-sidebar/dist/css/styles.css";
 import "./navbar.css";
-import UserPic from './UserPic'
-import { Link } from "react-router-dom"
-import logo from '../images/logo.png'
-
+import UserPic from "./UserPic";
+import { Link } from "react-router-dom";
+import zoomlogo from "../images/zoomlogo.png";
 
 const NavBar = () => {
+  //create initial menuCollapse state using useState hook
+  const [menuCollapse, setMenuCollapse] = useState(false);
 
-    //create initial menuCollapse state using useState hook
-    const [menuCollapse, setMenuCollapse] = useState(false)
-
-    //create a custom function that will change menucollapse state from false to true and true to false
+  //create a custom function that will change menucollapse state from false to true and true to false
   const menuIconClick = () => {
     //condition checking to change state from true to false and vice versa
     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
@@ -47,54 +44,65 @@ const NavBar = () => {
   const [isAuth, setIsAuth] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem('token') !== null) {
+    if (localStorage.getItem("token") !== null) {
       setIsAuth(true);
     }
   }, []);
 
   return (
-    
-    <>
+    <IconContext.Provider value={{ className: "react-icons" }}>
       <div id="header">
-          {/* collapsed props to change menu size using menucollapse state */}
-   
+        {/* collapsed props to change menu size using menucollapse state */}
+
         <ProSidebar collapsed={menuCollapse}>
           <SidebarHeader>
-          <div className="logotext">
+            <div className="user-img">
               {/* small and big change using menucollapse state */}
               <UserPic />
             </div>
             <div className="closemenu" onClick={menuIconClick}>
-                {/* changing menu collapse icon on click */}
-              {menuCollapse ? (
-                <FiArrowRightCircle/>
+              {/* changing menu collapse icon on click */}
+              {/* {menuCollapse ? (
+                <FiArrowRightCircle size={30}/>
               ) : (
-                <FiArrowLeftCircle/>
-              )}
+                <FiArrowLeftCircle size={30}/>
+              )} */}
             </div>
           </SidebarHeader>
           <SidebarContent>
-              {' '}
+            {" "}
             <Menu iconShape="square">
-              <MenuItem active={true} icon={<GoGraph size={30} />}><Link to='/dashboard'>
-                Dashboard
+              <MenuItem active={true} icon={<GoGraph />}>
+                <Link to="/dashboard">
+                  <p className="sidebar-links">Dashboard</p>
                 </Link>
               </MenuItem>
-              <MenuItem icon={<MdAttachMoney size={80} />}><Link to='/income'>Income</Link></MenuItem>
-              <MenuItem icon={<FaMoneyCheck size={30} />}><Link to='/assets'>Assets</Link></MenuItem>
-              <MenuItem icon={<RiBriefcase3Fill size={50} />}><Link to='/liabilities'>Liabilites</Link></MenuItem>
-              <img src={logo} className="side-logo" alt="sidebar logo" />
+              <MenuItem icon={<MdAttachMoney />} active={true}>
+                <Link to="/income">
+                  <p className="sidebar-links">Income</p>
+                </Link>
+              </MenuItem>
+              <MenuItem icon={<FaMoneyCheck />} active={true}>
+                <Link to="/assets">
+                  <p className="sidebar-links">Assets</p>
+                </Link>
+              </MenuItem>
+              <MenuItem icon={<RiBriefcase3Fill />} active={true}>
+                <Link to="/liabilities">
+                  <p className="sidebar-links">Liabilites</p>
+                </Link>
+              </MenuItem>
+              <img src={zoomlogo} className="side-logo" alt="sidebar logo" />
             </Menu>
           </SidebarContent>
           <SidebarFooter>
             <Menu iconShape="square">
-              <MenuItem icon={<FiLogOut />}>Logout</MenuItem>
+              <MenuItem icon={<FiLogOut />} active={true}>Logout</MenuItem>
             </Menu>
-          </SidebarFooter> 
+          </SidebarFooter>
         </ProSidebar>
-     
       </div>
-    </>
+    </IconContext.Provider>
   );
 };
 

@@ -19,31 +19,14 @@ const pieData = [
     value: 419,
     color: "hsl(56, 70%, 50%)"
   },
-  {
-    id: "ruby",
-    label: "ruby",
-    value: 407,
-    color: "hsl(103, 70%, 50%)"
-  },
-  {
-    id: "haskell",
-    label: "haskell",
-    value: 474,
-    color: "hsl(186, 70%, 50%)"
-  },
-  {
-    id: "go",
-    label: "go",
-    value: 71,
-    color: "hsl(104, 70%, 50%)"
-  }
 ];
 
 return (
   <div className="debtincome-ctr">
+    <h3>Debt-to-Income</h3>
     <ResponsivePie
       data={pieData}
-      margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+      margin={{ top: 40, right: 100, bottom: 100, left: 100 }}
       innerRadius={0.5}
       padAngle={0.7}
       cornerRadius={3}

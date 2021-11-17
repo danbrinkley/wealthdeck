@@ -37,6 +37,7 @@ const Income = () => {
 
     return (
         <div className="income-ctr">
+          <h3>Income</h3>
             <ResponsiveBar
       data={data}
       keys={["degress"]}

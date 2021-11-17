@@ -1,69 +1,94 @@
 import React, { Component } from "react";
-import axiosInstance from "../../axiosApi";
+import { Link } from "react-router-dom";
+// import {
+//   FacebookLoginButton,
+//   InstagramLoginButton
+// } from "react-social-login-buttons";
 
 class Login extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {username: "", password: ""};
+  constructor() {
+    super();
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleSubmitWThen = this.handleSubmitWThen.bind(this);
-    }
+    this.state = {
+      email: "",
+      password: ""
+    };
 
-    handleChange(event) {
-        this.setState({[event.target.name]: event.target.value});
-    }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-    handleSubmitWThen(event){
-        event.preventDefault();
-        axiosInstance.post('/token/obtain/', {
-                username: this.state.username,
-                password: this.state.password
-            }).then(
-                result => {
-                    axiosInstance.defaults.headers['Authorization'] = "JWT " + result.data.access;
-                    localStorage.setItem('access_token', result.data.access);
-                    localStorage.setItem('refresh_token', result.data.refresh);
-                }
-        ).catch (error => {
-            throw error;
-        })
-    }
+  handleChange(event) {
+    let target = event.target;
+    let value = target.type === "checkbox" ? target.checked : target.value;
+    let name = target.name;
 
-    async handleSubmit(event) {
-        event.preventDefault();
-        try {
-            const response = await axiosInstance.post('/token/obtain/', {
-                username: this.state.username,
-                password: this.state.password
-            });
-            axiosInstance.defaults.headers['Authorization'] = "JWT " + response.data.access;
-            localStorage.setItem('access_token', response.data.access);
-            localStorage.setItem('refresh_token', response.data.refresh);
-            return response;
-        } catch (error) {
-            throw error;
-        }
-    }
+    this.setState({
+      [name]: value
+    });
+  }
 
-    render() {
-        return (
-            <div>
-                Login
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Username:
-                        <input name="username" type="text" value={this.state.username} onChange={this.handleChange}/>
-                    </label>
-                    <label>
-                        Password:
-                        <input name="password" type="password" value={this.state.password} onChange={this.handleChange}/>
-                    </label>
-                    <input type="submit" value="Submit"/>
-                </form>
+  handleSubmit(event) {
+    event.preventDefault();
+
+    console.log("The form was submitted with the following data:");
+    console.log(this.state);
+  }
+
+  render() {
+    return (
+      <div className="formCenter">
+        <form className="formFields" onSubmit={this.handleSubmit}>
+          <div className="formField">
+            <label className="formFieldLabel" htmlFor="email">
+              E-Mail Address
+            </label>
+            <input
+              type="email"
+              id="email"
+              className="formFieldInput"
+              placeholder="Enter your email"
+              name="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+          </div>
+
+          <div className="formField">
+            <label className="formFieldLabel" htmlFor="password">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              className="formFieldInput"
+              placeholder="Enter your password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+          </div>
+
+          <div className="formField">
+            <button className="formFieldButton">Sign In</button>{" "}
+            <Link to="/" className="formFieldLink">
+              Create an account
+            </Link>
+          </div>
+
+          {/* <div className="socialMediaButtons">
+            <div className="facebookButton">
+              <FacebookLoginButton onClick={() => alert("Hello")} />
             </div>
-        )
-    }
+
+            <div className="instagramButton">
+              <InstagramLoginButton onClick={() => alert("Hello")} />
+            </div> */}
+          {/* </div> */}
+        </form>
+      </div>
+    );
+  }
 }
+
 export default Login;

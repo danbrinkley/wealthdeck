@@ -6,284 +6,153 @@ const Performance = () => {
 
     const data = [
         {
-          "id": "japan",
-          "color": "hsl(194, 70%, 50%)",
+          "id": "2021",
+          "color": "hsla(256, 91%, 30%, 1)",
           "data": [
             {
-              "x": "plane",
-              "y": 271
+              "x": "Jan",
+              "y": 22100
             },
             {
-              "x": "helicopter",
-              "y": 197
+              "x": "Feb",
+              "y": 19700
             },
             {
-              "x": "boat",
-              "y": 60
+              "x": "Mar",
+              "y": 6000
             },
             {
-              "x": "train",
-              "y": 95
+              "x": "Apr",
+              "y": 9500
             },
             {
-              "x": "subway",
-              "y": 298
+              "x": "May",
+              "y": 29800
             },
             {
-              "x": "bus",
-              "y": 210
+              "x": "June",
+              "y": 21000
             },
             {
-              "x": "car",
-              "y": 19
+              "x": "Jul",
+              "y": 19000
             },
             {
-              "x": "moto",
-              "y": 111
+              "x": "Aug",
+              "y": 11100
             },
             {
-              "x": "bicycle",
-              "y": 155
+              "x":"Oct",
+              "y": 15500
             },
             {
-              "x": "horse",
-              "y": 193
+              "x": "Nov",
+              "y": 19300
             },
-            {
-              "x": "skateboard",
-              "y": 108
-            },
-            {
-              "x": "others",
-              "y": 16
-            }
           ]
         },
         {
-          "id": "france",
-          "color": "hsl(319, 70%, 50%)",
+          "id": "2020",
+          "color":"blue",
           "data": [
             {
-              "x": "plane",
-              "y": 173
+              "x": "Jan",
+              "y": 17100
             },
             {
-              "x": "helicopter",
-              "y": 65
+              "x": "Feb",
+              "y": 18700
             },
             {
-              "x": "boat",
-              "y": 35
+              "x": "Mar",
+              "y": 9900
             },
             {
-              "x": "train",
-              "y": 193
+              "x": "Apr",
+              "y": 11000
             },
             {
-              "x": "subway",
-              "y": 163
+              "x": "May",
+              "y": 19800
             },
             {
-              "x": "bus",
-              "y": 74
+              "x": "June",
+              "y": 18000
             },
             {
-              "x": "car",
-              "y": 178
+              "x": "Jul",
+              "y": 17000
             },
             {
-              "x": "moto",
-              "y": 51
+              "x": "Aug",
+              "y": 10100
             },
             {
-              "x": "bicycle",
-              "y": 116
+              "x":"Oct",
+              "y": 12500
             },
             {
-              "x": "horse",
-              "y": 85
+              "x": "Nov",
+              "y": 15300
             },
-            {
-              "x": "skateboard",
-              "y": 249
-            },
-            {
-              "x": "others",
-              "y": 162
-            }
           ]
         },
         {
-          "id": "us",
-          "color": "hsl(337, 70%, 50%)",
+          "id": "2019",
+          "color": "hsla(256, 41%, 30%, 1)",
           "data": [
             {
-              "x": "plane",
-              "y": 167
+              "x": "Jan",
+              "y": 16100
             },
             {
-              "x": "helicopter",
-              "y": 108
+              "x": "Feb",
+              "y": 13700
             },
             {
-              "x": "boat",
-              "y": 25
+              "x": "Mar",
+              "y": 16000
             },
             {
-              "x": "train",
-              "y": 62
+              "x": "Apr",
+              "y": 11500
             },
             {
-              "x": "subway",
-              "y": 132
+              "x": "May",
+              "y": 15800
             },
             {
-              "x": "bus",
-              "y": 13
+              "x": "June",
+              "y": 17000
             },
             {
-              "x": "car",
-              "y": 132
+              "x": "Jul",
+              "y": 12000
             },
             {
-              "x": "moto",
-              "y": 93
+              "x": "Aug",
+              "y": 10100
             },
             {
-              "x": "bicycle",
-              "y": 237
+              "x":"Oct",
+              "y": 13500
             },
             {
-              "x": "horse",
-              "y": 161
+              "x": "Nov",
+              "y": 17300
             },
-            {
-              "x": "skateboard",
-              "y": 275
-            },
-            {
-              "x": "others",
-              "y": 251
-            }
           ]
         },
-        {
-          "id": "germany",
-          "color": "hsl(259, 70%, 50%)",
-          "data": [
-            {
-              "x": "plane",
-              "y": 203
-            },
-            {
-              "x": "helicopter",
-              "y": 240
-            },
-            {
-              "x": "boat",
-              "y": 210
-            },
-            {
-              "x": "train",
-              "y": 232
-            },
-            {
-              "x": "subway",
-              "y": 224
-            },
-            {
-              "x": "bus",
-              "y": 41
-            },
-            {
-              "x": "car",
-              "y": 150
-            },
-            {
-              "x": "moto",
-              "y": 82
-            },
-            {
-              "x": "bicycle",
-              "y": 79
-            },
-            {
-              "x": "horse",
-              "y": 48
-            },
-            {
-              "x": "skateboard",
-              "y": 22
-            },
-            {
-              "x": "others",
-              "y": 171
-            }
-          ]
-        },
-        {
-          "id": "norway",
-          "color": "hsl(210, 70%, 50%)",
-          "data": [
-            {
-              "x": "plane",
-              "y": 260
-            },
-            {
-              "x": "helicopter",
-              "y": 183
-            },
-            {
-              "x": "boat",
-              "y": 206
-            },
-            {
-              "x": "train",
-              "y": 205
-            },
-            {
-              "x": "subway",
-              "y": 131
-            },
-            {
-              "x": "bus",
-              "y": 89
-            },
-            {
-              "x": "car",
-              "y": 260
-            },
-            {
-              "x": "moto",
-              "y": 281
-            },
-            {
-              "x": "bicycle",
-              "y": 216
-            },
-            {
-              "x": "horse",
-              "y": 129
-            },
-            {
-              "x": "skateboard",
-              "y": 274
-            },
-            {
-              "x": "others",
-              "y": 112
-            }
-          ]
-        }
       ]
     return (
         <div className="performance-ctr">
+            <h3>Performance</h3>
             <ResponsiveLine
         data={data}
-        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+        margin={{ top: 40, right: 90, bottom: 70, left: 70 }}
         xScale={{ type: 'point' }}
-        yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
-        yFormat=" >-.2f"
+        yScale={{ type: 'linear', min: 'auto', max: 'auto',  reverse: false }}
+        yFormat=""
         axisTop={null}
         axisRight={null}
         axisBottom={{
@@ -291,7 +160,7 @@ const Performance = () => {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'transportation',
+            legend: 'Months',
             legendOffset: 36,
             legendPosition: 'middle'
         }}
@@ -300,8 +169,8 @@ const Performance = () => {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'count',
-            legendOffset: -40,
+            legend: '$ thousands',
+            legendOffset: -50,
             legendPosition: 'middle'
         }}
         pointSize={10}
