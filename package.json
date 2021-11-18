@@ -1,0 +1,47 @@
+{
+  "name": "wealthdeck",
+  "version": "1.0.0",
+  "description": "WealthDeck Your Financial Dashboard",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "dev": "webpack --mode development --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "react-scripts start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danbrinkley/wealthdeck.git"
+  },
+  "author": "DanBrinkley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danbrinkley/wealthdeck/issues"
+  },
+  "homepage": "https://github.com/danbrinkley/wealthdeck#readme",
+  "dependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-transform-react-jsx": "^7.16.0",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@nivo/bar": "^0.74.0",
+    "@nivo/core": "^0.74.0",
+    "@nivo/line": "^0.74.0",
+    "@nivo/pie": "^0.74.0",
+    "axios": "^0.24.0",
+    "babel-loader": "^8.2.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-expo": "^8.5.1",
+    "css-loader": "^6.5.1",
+    "file-loader": "^6.2.0",
+    "path": "^0.12.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-pro-sidebar": "^0.7.1",
+    "react-router-dom": "^6.0.2",
+    "react-scripts": "^4.0.3",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.64.0",
+    "webpack-cli": "^4.9.1"
+  }
+}
