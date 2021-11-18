@@ -3,14 +3,14 @@ import './App.css';
 import {useState, useEffect} from 'react'
 import IncomeList from './IncomeList';
 import IncomeForm from 'IncomeForm';
-import {useCookies} from 'react-cookie';
+
 import {useNavigate} from 'react-router-dom';
 
 function Income() {
  
   const [income, setIncome] = useState([])
   const [editIncome, setEditIncome] = useState(null)
-  const [token, setToken, removeToken] = useCookies(['mytoken'])
+  
   const navigate = useNavigate();
  
 

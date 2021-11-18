@@ -1,44 +1,34 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useEffect } from 'react'
 
-const Logout = () => {
-  const [loading, setLoading] = useState(true);
+import { useNavigate } from 'react-router-dom';
+import {useCookies} from 'react-cookie';
 
-  useEffect(() => {
-    if (localStorage.getItem('token') == null) {
-      window.location.replace('http://localhost:3000/login');
-    } else {
-      setLoading(false);
+function Logout () {
+  const [token, setToken, removeToken] = useCookies(['mytoken'])
+
+
+  const navigate = useNavigate();
+
+  const logoutBtn = () => {
+    removeToken(['mytoken'])
+  }
+
+  
+
+  useEffect (() => {
+    if(!token['mytoken']) {
+      navigate('/')
     }
-  }, []);
+  }, [token])
 
-  const handleLogout = e => {
-    e.preventDefault();
-
-    fetch('http://127.0.0.1:8000/api/v1/users/auth/logout/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Token ${localStorage.getItem('token')}`
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        localStorage.clear();
-        window.location.replace('http://localhost:3000/login');
-      });
-  };
 
   return (
-    <div>
-      {loading === false && (
-        <Fragment>
-          <h1>Are you sure you want to logout?</h1>
-          <input type='button' value='Logout' onClick={handleLogout} />
-        </Fragment>
-      )}
-    </div>
-  );
-};
+    <div className = "col">
+        <button onClick = {logoutBtn}>Logout</button>
+      </div>
+  )
 
-export default Logout;
+
+}
+
+export default Logout

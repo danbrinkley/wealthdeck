@@ -6,6 +6,7 @@ import DebtIncome from '../DebtIncome'
 import Income from '../Income'
 import Assets from '../Assets'
 import Debt from '../Debt'
+import Logout from '../Landing/Logout'
 import './dashboard.css'
 
 const Dashboard = () => {
@@ -42,6 +43,7 @@ const Dashboard = () => {
 
             <div className="main-container">
                 <Header />
+                
 
             <div className="main-row1-ctr">
                 <Performance />
