@@ -1,0 +1,13 @@
+debtincome-ctr > h3 {
+  padding-top: 20px;
+  margin-bottom: 0px;
+}
+
+.debtincome-ctr {
+  width: 35%;
+  /* border: 1px solid purple; */
+  height: 90%;
+  margin: 10px;
+  padding: 0px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+}
