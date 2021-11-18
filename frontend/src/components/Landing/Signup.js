@@ -1,111 +1,88 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import "../../App.css"
+import React, { useState, useEffect } from 'react';
 
-class Signup extends Component {
-  constructor() {
-    super();
+const Signup = () => {
+  const [email, setEmail] = useState('');
+  const [password1, setPassword1] = useState('');
+  const [password2, setPassword2] = useState('');
+  const [errors, setErrors] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-    this.state = {
-      email: "",
-      password: "",
-      name: "",
-      hasAgreed: false
-    };
+  useEffect(() => {
+    if (localStorage.getItem('token') !== null) {
+      window.location.replace('http://localhost:3000/dashboard');
+    } else {
+      setLoading(false);
+    }
+  }, []);
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    let target = event.target;
-    let value = target.type === "checkbox" ? target.checked : target.value;
-    let name = target.name;
-
-    this.setState({
-      [name]: value
-    });
-  }
-
-  handleSubmit(e) {
+  const onSubmit = e => {
     e.preventDefault();
 
-    console.log("The form was submitted with the following data:");
-    console.log(this.state);
-  }
+    const user = {
+      email: email,
+      password1: password1,
+      password2: password2
+    };
 
-  render() {
-    return (
-      <div className="formCenter">
-        <form onSubmit={this.handleSubmit} className="formFields">
-          <div className="formField">
-            <label className="formFieldLabel" htmlFor="name">
-              Full Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              className="formFieldInput"
-              placeholder="Enter your full name"
-              name="name"
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="formField">
-            <label className="formFieldLabel" htmlFor="password">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              className="formFieldInput"
-              placeholder="Enter your password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="formField">
-            <label className="formFieldLabel" htmlFor="email">
-              E-Mail Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="formFieldInput"
-              placeholder="Enter your email"
-              name="email"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-          </div>
+    fetch('http://127.0.0.1:8000/api/v1/users/auth/register/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.key) {
+          localStorage.clear();
+          localStorage.setItem('token', data.key);
+          window.location.replace('http://localhost:3000/dashboard');
+        } else {
+          setEmail('');
+          setPassword1('');
+          setPassword2('');
+          localStorage.clear();
+          setErrors(true);
+        }
+      });
+  };
 
-          <div className="formField">
-            <label className="formFieldCheckboxLabel">
-              <input
-                className="formFieldCheckbox"
-                type="checkbox"
-                name="hasAgreed"
-                value={this.state.hasAgreed}
-                onChange={this.handleChange}
-              />{" "}
-              I agree all statements in{" "}
-              <a href="null" className="formFieldTermsLink">
-                terms of service
-              </a>
-            </label>
-          </div>
+  return (
+    <div>
+      {loading === false && <h1>Signup</h1>}
+      {errors === true && <h2>Cannot signup with provided credentials</h2>}
+      <form onSubmit={onSubmit}>
+        <label htmlFor='email'>Email address:</label> <br />
+        <input
+          name='email'
+          type='email'
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+        />{' '}
+        <br />
+        <label htmlFor='password1'>Password:</label> <br />
+        <input
+          name='password1'
+          type='password'
+          value={password1}
+          onChange={e => setPassword1(e.target.value)}
+          required
+        />{' '}
+        <br />
+        <label htmlFor='password2'>Confirm password:</label> <br />
+        <input
+          name='password2'
+          type='password'
+          value={password2}
+          onChange={e => setPassword2(e.target.value)}
+          required
+        />{' '}
+        <br />
+        <input type='submit' value='Signup' />
+      </form>
+    </div>
+  );
+};
 
-          <div className="formField">
-            <button className="formFieldButton">Sign Up</button>{" "}
-            <Link to="/sign-in" className="formFieldLink">
-              I'm already member
-            </Link>
-          </div>
-        </form>
-      </div>
-    );
-  }
-}
 export default Signup;

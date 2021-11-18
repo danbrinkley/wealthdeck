@@ -1,7 +1,7 @@
 import React from "react";
 import "./pages.css";
 import Assets from "../Assets";
-import NavBar from "../../components/NavBar";
+import NavBar from "../NavBar";
 import Header from "../Header";
 
 const AssetsPage = () => {

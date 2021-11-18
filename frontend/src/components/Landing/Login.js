@@ -1,94 +1,80 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-// import {
-//   FacebookLoginButton,
-//   InstagramLoginButton
-// } from "react-social-login-buttons";
 
-class Login extends Component {
-  constructor() {
-    super();
 
-    this.state = {
-      email: "",
-      password: ""
-    };
+import React, {useState, useEffect} from 'react'
+import APIService from '../../APIService';
+import {useCookies} from 'react-cookie';
+import {useNavigate} from 'react-router-dom';
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+function Login() {
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [token, setToken] = useCookies(['mytoken'])
+    const [isLogin, setLogin] = useState(true)
+    const navigate = useNavigate();
 
-  handleChange(event) {
-    let target = event.target;
-    let value = target.type === "checkbox" ? target.checked : target.value;
-    let name = target.name;
 
-    this.setState({
-      [name]: value
-    });
-  }
+    useEffect(() => {
+        if(token['mytoken']) {
+           navigate('/dashboard')
+        }
+    }, [token])
 
-  handleSubmit(event) {
-    event.preventDefault();
+    const loginBtn = () => {
+        APIService.LoginUser({username, password})
+        .then(resp => setToken('mytoken',resp.token))
+        .catch(error => console.log(error))
 
-    console.log("The form was submitted with the following data:");
-    console.log(this.state);
-  }
+    }
 
-  render() {
+    const RegisterBtn = () => {
+        APIService.RegisterUser({username, password})
+        .then(() =>  loginBtn())
+        .catch(error =>console.log(error))
+
+    }
     return (
-      <div className="formCenter">
-        <form className="formFields" onSubmit={this.handleSubmit}>
-          <div className="formField">
-            <label className="formFieldLabel" htmlFor="email">
-              E-Mail Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="formFieldInput"
-              placeholder="Enter your email"
-              name="email"
-              value={this.state.email}
-              onChange={this.handleChange}
+        <div className = "App">
+            <br/>
+            <br/>
+            {isLogin ? <h1>Please Login </h1> : <h1>Please Register </h1>}
+            
+
+            <br/>
+            <br/>
+
+            <div className = "mb-3">
+            <label htmlFor = "username" className = "form-label">Username</label>
+            <input type = "text" className = "form-control" id="username" placeholder = "Please Enter Username"
+            value = {username} onChange = {e => setUsername(e.target.value)}
             />
-          </div>
 
-          <div className="formField">
-            <label className="formFieldLabel" htmlFor="password">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              className="formFieldInput"
-              placeholder="Enter your password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-          </div>
-
-          <div className="formField">
-            <button className="formFieldButton">Sign In</button>{" "}
-            <Link to="/" className="formFieldLink">
-              Create an account
-            </Link>
-          </div>
-
-          {/* <div className="socialMediaButtons">
-            <div className="facebookButton">
-              <FacebookLoginButton onClick={() => alert("Hello")} />
             </div>
 
-            <div className="instagramButton">
-              <InstagramLoginButton onClick={() => alert("Hello")} />
-            </div> */}
-          {/* </div> */}
-        </form>
-      </div>
-    );
-  }
+            <div className = "mb-3">
+            <label htmlFor = "password" className = "form-label">Password</label>
+            <input type = "password" className = "form-control" id="password" placeholder = "Please Enter Password"
+            value = {password} onChange = {e => setPassword(e.target.value)}
+            
+            />
+
+            </div>
+
+            {isLogin ?  <button onClick = {loginBtn} className = "btn btn-primary">Login</button>
+            :  <button onClick = {RegisterBtn} className = "btn btn-primary">Register</button>
+        }
+
+           
+            <div className = "mb-3">
+            <br/>
+            {isLogin ? <h5>If You Don't Have Account, Please <button className = "btn btn-primary" onClick = {() => setLogin(false)} >Register</button>Here</h5>
+            
+             :  <h5>If You Have Account, Please <button className = "btn btn-primary" onClick = {() => setLogin(true)} >Login</button>Here</h5>
+            }
+
+            </div>
+
+        </div>
+    )
 }
 
-export default Login;
+export default Login
