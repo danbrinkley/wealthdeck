@@ -1,5 +1,4 @@
 
-
 import React, {useState, useEffect} from 'react'
 import APIService from '../../APIService';
 import {useCookies} from 'react-cookie';
@@ -10,8 +9,8 @@ function Form(props) {
     const [token] = useCookies(['mytoken'])
 
     useEffect(() => {
-        setTitle(props.income.value)
-        setDescription(props.income.date)
+        setValue(props.income.value)
+        setDate(props.income.date)
 
     }, [props.income])
 

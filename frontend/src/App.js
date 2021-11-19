@@ -9,7 +9,9 @@ import AssetsPage from "./components/Pages/AssetsPage";
 import IncomePage from "./components/Pages/IncomePage";
 import DebtPage from "./components/Pages/DebtPage";
 import { CookiesProvider } from "react-cookie";
-
+import  AddIncome  from "./components/Income/AddIncome";
+import IncomeList  from "./components/Income/IncomeList";
+import  UpdateIncome  from "./components/Income/UpdateIncome";
 
 
 const App = () => {
@@ -24,8 +26,10 @@ const App = () => {
             <Route path='/logout' element={<Logout />} />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/assets' element={<AssetsPage />} />
-            <Route path='/income' element={<IncomePage />} />
+            <Route exact path='/income' element={<IncomePage />} />
             <Route path='/debt' element={<DebtPage />} />
+            <Route exact path="/add/" element={<AddIncome />} />
+            <Route path="/income/:id/update/" element={<UpdateIncome />} />
           </Routes>
         </Router>
       </CookiesProvider>

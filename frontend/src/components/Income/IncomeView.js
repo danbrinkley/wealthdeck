@@ -1,8 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 import {useState, useEffect} from 'react'
 import IncomeList from './IncomeList';
-import IncomeForm from 'IncomeForm';
+import IncomeForm from './IncomeForm';
+import {useCookies} from 'react-cookie';
 
 import {useNavigate} from 'react-router-dom';
 
@@ -10,7 +10,7 @@ function Income() {
  
   const [income, setIncome] = useState([])
   const [editIncome, setEditIncome] = useState(null)
-  
+  const [token, setToken, removeToken] = useCookies(['mytoken'])
   const navigate = useNavigate();
  
 
@@ -32,7 +32,7 @@ function Income() {
   useEffect(() => {
     if(!token['mytoken']) {
         navigate('/dashboard')
-        //window.location.href = '/'
+    
        
     }
 }, [token])
@@ -48,7 +48,7 @@ function Income() {
         return income;
       }
       else {
-        return myIncome;
+        return myincome;
       }
     })
 
@@ -56,26 +56,26 @@ function Income() {
 
   }
 
-  constincomeForm = () => {
+  const incomeForm = () => {
     setEditIncome({value:'', date:''})
 
   }
 
   const insertedInformation = (income) => {
-    const new_income = [...incomes,income]
-    setincomes(new_incomes)
+    const new_incomes = [...income,income]
+    setIncome(new_incomes)
 
   }
 
   const deleteBtn = (income) => {
-    const new_incomes = incomes.filter(myincome => {
+    const new_incomes = income.filter(myincome => {
       if(myincome.id === income.id) {
         return false
       }
       return true;
     })
 
-    setIncomes(new_incomes)
+    setIncome(new_incomes)
 
   }
 
@@ -108,7 +108,7 @@ function Income() {
 
     
 
-        <IncomeList incomes = {incomes} editBtn = {editBtn} deleteBtn = {deleteBtn}/>
+        <IncomeList incomes = {income} editBtn = {editBtn} deleteBtn = {deleteBtn}/>
         
         {editIncome ? <IncomeForm income = {editIncome} updatedInformation = {updatedInformation} insertedInformation = {insertedInformation}/> : null}
 

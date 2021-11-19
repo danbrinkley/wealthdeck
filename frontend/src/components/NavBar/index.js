@@ -1,4 +1,4 @@
-//import useState hook to create menu collapse state
+//import useState hook to create income collapse state
 import React, { useState, useEffect, Fragment } from "react";
 import { IconContext } from "react-icons";
 //import react pro sidebar components
@@ -53,7 +53,7 @@ const logoutBtn = () => {
   return (
     <IconContext.Provider value={{ className: "react-icons" }}>
       <div id="header">
-        {/* collapsed props to change menu size using menucollapse state */}
+        {/* collapsed props to change income size using menucollapse state */}
 
         <ProSidebar collapsed={menuCollapse}>
           <SidebarHeader>
@@ -62,7 +62,7 @@ const logoutBtn = () => {
               <UserPic />
             </div>
             <div className="closemenu" onClick={menuIconClick}>
-              {/* changing menu collapse icon on click */}
+              {/* changing income collapse icon on click */}
               {/* {menuCollapse ? (
                 <FiArrowRightCircle size={30}/>
               ) : (

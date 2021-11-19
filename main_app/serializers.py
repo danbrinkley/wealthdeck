@@ -3,12 +3,19 @@ from .models import Income
 from django.contrib.auth.models import User
 from rest_framework.authtoken.views import Token
 
-
-
 class IncomeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Income
-        fields = ['id', 'value', 'date']
+        fields = ['id', 'value', 'date']  
+
+
+
+
+
+# class IncomeSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Income
+#         fields = ['id', 'value', 'date']
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -26,22 +33,17 @@ class UserSerializer(serializers.ModelSerializer):
         Token.objects.create(user=user)
         return user
 
-# '''
-# class ArticlIncomeizer(serializers.Serializer):
-#     title = serializers.CharField(max_length=100)
-#     description = serializers.CharField()
 
-#     # Create and return a new `Income` instance,
-#     # given the validated data.
+# class IncomeSerializers(serializers.Serializer):
+#     value = serializers.CharField(max_length=100)
+#     date = serializers.CharField(max_length=30)
+
+
 #     def create(self, validated_data):
 #         return Income.objects.create(validated_data)
-
-#     #Update and return an existing `Income` instance,
-#     # given the validated data.
 
 #     def update(self, instance, validated_data):
 #         instance.value = validated_data.get('value', instance.value)
 #         instance.date = validated_data.get('date', instance.date)
 #         instance.save()
 #         return instance
-# '''
