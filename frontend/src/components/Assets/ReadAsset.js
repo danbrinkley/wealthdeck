@@ -10,10 +10,15 @@ const ReadAsset = ({ asset, handleEditClick, handleDeleteClick }) => {
         <button
           type="button"
           onClick={(e) => handleEditClick(e, asset)}
+          className="formFieldButton"
+          id="edit"
         >
           Edit
         </button>
-        <button type="button" onClick={() => handleDeleteClick(asset.id)}>
+        <button 
+        id="delete" 
+        className="formFieldButton"
+        type="button" onClick={() => handleDeleteClick(asset.id)}>
           Delete
         </button>
       </td>

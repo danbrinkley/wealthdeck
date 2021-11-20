@@ -6,11 +6,17 @@
   box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
   margin: 10px;
   width: 33%;
+  margin-left: 10px;
 }
 
 .income-ctr > h3 {
   padding-left: 15px;
   margin-bottom: 0px;
+  color: black;
+  font-weight: 400;
+  margin-bottom: 10px;
+  display: inline-block;
+
 }
 
 
@@ -30,22 +36,24 @@
   font-size: 1.3em;
 }
 
-.details-main-ctr .formCenter {
+.form-ctr{
   width: 100%;
-  height: 350px;
+  height: 300px;
   margin-right: auto;
   margin-top: 15%;
   display: block;
-  border: 2px solid goldenrod;
-  background-color: black;
+  background-color: white;
   padding-right: 60px;
   padding-left: 60px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+  max-width: 350px;
+  border: 1px solid goldenrod;
 }
 
 .form-title {
-  color: white;
+  color: black;
   font-weight: 300;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-bottom: 1px solid goldenrod;
   display: inline-block;
 }
@@ -64,27 +72,26 @@
 }
 
 .details-main-ctr .formFieldLabel {
-  display: block;
+ 
   text-transform: uppercase;
-  font-size: 1em;
-  color: white;
-  padding-top: 10px;
+  font-size: 0.9em;
+  color: black;
+  padding-top: 15px;
 }
 .formFieldInput {
   width: 85%;
-  background-color: transparent;
   border: none;
-  color: white;
+  color: black;
   outline: none;
   border-bottom: 1px solid goldenrod;
   font-size: 1em;
   font-weight: 300;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   margin-top: 5px;
 }
 
 .formFieldInput::placeholder {
-  color: white;
+  color: black;
 }
 
 .details-main-ctr .formFieldButton {
@@ -92,12 +99,60 @@
   color: white;
   border: 1px solid goldenrod;
   outline: none;
-  padding: 15px 50px;
+  padding: 5px 20px;
   font-size: 1em;
-  font-weight: 300;
+  font-weight: 400;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .formFieldButton:hover {
   background-color: linear-gradient(0deg, goldenrod 0%, goldenrod 100%);
+}
+
+
+
+table {
+  table-layout: auto;
+  width: 100%;  
+}
+
+.table-ctr {
+  
+  height: 300px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+  border: 2px solid goldenrod;
+  max-width: 350px;
+}
+
+.table-head{
+
+background: black;
+color: white;
+margin-right: 5px;
+text-transform: uppercase;
+font-style: normal;
+align-items: center;
+margin: 5px;
+border-spacing: 50px;
+padding: 5px;
+}
+
+td {
+  text-align: center;
+  padding: 2px;
+}
+
+#delete, #edit {
+  padding: 3px;
+  margin: 2px;
+}
+
+#cancel, #save {
+  display: inline;
+  padding: 1px;
+}
+#edit-input {
+  padding: 0px;
+  width: 90%;
 }

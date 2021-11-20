@@ -115,7 +115,7 @@ const IncomeTable = () => {
   const handleDeleteClick = (contactId) => {
     const newContacts = [...cashflow];
 
-    const index = cashflow.findIndex((casflow) => cashflow.id === contactId);
+    const index = cashflow.findIndex((cashflow) => cashflow.id === contactId);
 
     newContacts.splice(index, 1);
 
@@ -124,7 +124,7 @@ const IncomeTable = () => {
 
   return (
     <div>
-    <div className="formCenter">
+    <div className="form-ctr">
       <h2 className="form-title">Add Income</h2>
       <form onSubmit={handleAddFormSubmit}>
         <label className="formFieldLabel">Date:
@@ -139,7 +139,7 @@ const IncomeTable = () => {
         </label>
         <label className="formFieldLabel">Value ($):
         <input
-          type="text"
+          type="number"
           name="cashflow"
           required="required"
           placeholder="Enter cashflow value..."
@@ -155,9 +155,10 @@ const IncomeTable = () => {
       </div>
       <br></br>
       <br></br>
+      <div className="table-ctr">
       <form onSubmit={handleEditFormSubmit}>
         <table>
-          <thead>
+          <thead className="table-head">
             <tr>
               <th>Date</th>
               <th>Cashflow</th>
@@ -185,7 +186,7 @@ const IncomeTable = () => {
           </tbody>
         </table>
       </form>
-    
+      </div>
     </div>
   );
 };

@@ -17,11 +17,11 @@ const DebtPage = () => {
 
         <div className="details-main-ctr">
           <Debt />
+          <DebtTable />
           
         </div>
 
-        <div className="details-main-row2-ctr">Table will go here</div>
-        <DebtTable />
+        
       </div>
     </div>
   );

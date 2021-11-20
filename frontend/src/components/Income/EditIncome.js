@@ -15,6 +15,7 @@ const EditIncome = ({
           name="date"
           value={editFormData.date}
           onChange={handleEditFormChange}
+          id="edit-input"
         ></input>
       </td>
       <td>
@@ -25,12 +26,20 @@ const EditIncome = ({
           name="cashflow"
           value={editFormData.cashflow}
           onChange={handleEditFormChange}
+          id="edit-input"
         ></input>
       </td>
       
       <td>
-        <button type="submit">Save</button>
-        <button type="button" onClick={handleCancelClick}>
+        <button type="submit" 
+        className="formFieldButton"
+        id="save"
+        >Save</button>
+        <button
+          id="cancel" 
+          type="button" 
+          onClick={handleCancelClick}
+          className="formFieldButton">
           Cancel
         </button>
       </td>

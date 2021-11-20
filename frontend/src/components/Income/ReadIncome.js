@@ -4,15 +4,20 @@ const ReadIncome = ({ cashflow, handleEditClick, handleDeleteClick }) => {
   return (
     <tr>
       <td>{cashflow.date}</td>
-      <td>{cashflow.value}</td>
+      <td>{cashflow.cashflow}</td>
       <td>
         <button
           type="button"
           onClick={(e) => handleEditClick(e, cashflow)}
+          className="formFieldButton"
+          id="edit"
         >
           Edit
         </button>
-        <button type="button" onClick={() => handleDeleteClick(cashflow.id)}>
+        <button
+        id="delete" 
+        className="formFieldButton"
+        type="button" onClick={() => handleDeleteClick(cashflow.id)}>
           Delete
         </button>
       </td>

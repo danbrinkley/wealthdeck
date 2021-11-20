@@ -15,6 +15,7 @@ const EditAsset = ({
           name="date"
           value={editFormData.date}
           onChange={handleEditFormChange}
+          id="edit-input"
         ></input>
       </td>
       <td>
@@ -22,9 +23,10 @@ const EditAsset = ({
           type="text"
           required="required"
           placeholder="Enter name of asset..."
-          name="asset"
-          value={editFormData.asset}
+          name="name"
+          value={editFormData.name}
           onChange={handleEditFormChange}
+          id="edit-input"
         ></input>
       </td>
       <td>
@@ -35,12 +37,20 @@ const EditAsset = ({
           name="value"
           value={editFormData.value}
           onChange={handleEditFormChange}
+          id="edit-input"
         ></input>
       </td>
       
       <td>
-        <button type="submit">Save</button>
-        <button type="button" onClick={handleCancelClick}>
+        <button type="submit" 
+        className="formFieldButton"
+        id="save"
+        >Save</button>
+        <button
+          id="cancel" 
+          type="button" 
+          onClick={handleCancelClick}
+          className="formFieldButton">
           Cancel
         </button>
       </td>

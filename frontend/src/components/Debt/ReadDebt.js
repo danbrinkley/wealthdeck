@@ -10,10 +10,15 @@ const ReadDebt = ({ debt, handleEditClick, handleDeleteClick }) => {
         <button
           type="button"
           onClick={(e) => handleEditClick(e, debt)}
+          className="formFieldButton"
+          id="edit"
         >
           Edit
         </button>
-        <button type="button" onClick={() => handleDeleteClick(debt.id)}>
+        <button 
+         id="delete" 
+         className="formFieldButton"
+         type="button" onClick={() => handleDeleteClick(debt.id)}>
           Delete
         </button>
       </td>

@@ -123,10 +123,51 @@ const AssetTable = () => {
   }, [])
 
   return (
-    <div className="app-container">
+    <div>
+    <div className="form-ctr">
+      <h2 className="form-title">Add Assets</h2>
+      <form onSubmit={handleAddFormSubmit}>
+      <label className="asset-labels">Date:
+        <input
+          type="date"
+          name="date"
+          required="required"
+          placeholder="Enter date asset was created..."
+          onChange={handleAddFormChange}
+          className="formFieldInput"
+        />
+        </label>
+        <label className="asset-labels">Name:
+        <input
+          type="text"
+          name="name"
+          required="required"
+          placeholder="Enter name of asset..."
+          onChange={handleAddFormChange}
+          className="formFieldInput"
+        />
+        </label>
+        <label className="asset-labels">Value ($):
+        <input
+          type="number"
+          name="value"
+          required="required"
+          placeholder="Enter asset value..."
+          onChange={handleAddFormChange}
+          className="formFieldInput"
+        />
+        </label>
+        <br></br>
+        <button className="formFieldButton" type="submit">Add</button>
+      </form>
+      </div>
+      <br></br>
+      <br></br>
+      <div className="table-ctr">
+
       <form onSubmit={handleEditFormSubmit}>
         <table>
-          <thead>
+          <thead className="table-head">
             <tr>
               <th>Date</th>
               <th>Name</th>
@@ -155,34 +196,7 @@ const AssetTable = () => {
           </tbody>
         </table>
       </form>
-
-      <h2>Add a Contact</h2>
-      <form onSubmit={handleAddFormSubmit}>
-        <input
-          type="date"
-          name="date"
-          required="required"
-          placeholder="Enter date asset was created..."
-          onChange={handleAddFormChange}
-        />
-
-        <input
-          type="text"
-          name="name"
-          required="required"
-          placeholder="Enter name of asset..."
-          onChange={handleAddFormChange}
-        />
-        <input
-          type="number"
-          name="value"
-          required="required"
-          placeholder="Enter asset value..."
-          onChange={handleAddFormChange}
-        />
-        
-        <button type="submit">Add</button>
-      </form>
+      </div>
     </div>
   );
 };

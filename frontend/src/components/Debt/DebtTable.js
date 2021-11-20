@@ -122,10 +122,51 @@ const DebtTable = () => {
   }, [])
 
   return (
-    <div className="app-container">
+    <div>
+    <div className="form-ctr">
+    
+      <h2 className="form-title">Add Liability</h2>
+      <form onSubmit={handleAddFormSubmit}>
+      <label className="debt-labels">Date:
+        <input
+          type="date"
+          name="date_created"
+          required="required"
+          placeholder="Enter date liability was created..."
+          onChange={handleAddFormChange}
+          className="formFieldInput"
+        />
+        </label>
+        <label className="debt-labels">Name:
+        <input
+          type="text"
+          name="name"
+          required="required"
+          placeholder="Enter name of liability..."
+          onChange={handleAddFormChange}
+          className="formFieldInput"
+        />
+        </label>
+        <label className="debt-labels">Balance:
+        <input
+          type="number"
+          name="balance"
+          required="required"
+          placeholder="Enter balance of liability..."
+          onChange={handleAddFormChange}
+          className="formFieldInput"
+        />
+        </label>
+        <button className="formFieldButton" type="submit">Add</button>
+      </form>
+      </div>
+      <br></br>
+      <br></br>
+      <div className="table-ctr">
+
       <form onSubmit={handleEditFormSubmit}>
         <table>
-          <thead>
+         <thead className="table-head">
             <tr>
               <th>Date Created</th>
               <th>Name</th>
@@ -138,50 +179,24 @@ const DebtTable = () => {
               <Fragment>
                 {editContactId === d.id ? (
                   <EditDebt
-                    editFormData={editFormData}
-                    handleEditFormChange={handleEditFormChange}
-                    handleCancelClick={handleCancelClick}
+                  editFormData={editFormData}
+                  handleEditFormChange={handleEditFormChange}
+                  handleCancelClick={handleCancelClick}
                   />
-                ) : (
-                  <ReadDebt
+                  ) : (
+                    <ReadDebt
                     debt={d}
                     handleEditClick={handleEditClick}
                     handleDeleteClick={handleDeleteClick}
-                  />
-                )}
+                    />
+                    )}
               </Fragment>
             ))}
           </tbody>
         </table>
       </form>
-
-      <h2>Add a Contact</h2>
-      <form onSubmit={handleAddFormSubmit}>
-        <input
-          type="date"
-          name="date_created"
-          required="required"
-          placeholder="Enter date liability was created..."
-          onChange={handleAddFormChange}
-        />
-        <input
-          type="text"
-          name="name"
-          required="required"
-          placeholder="Enter name of liability..."
-          onChange={handleAddFormChange}
-        />
-        <input
-          type="number"
-          name="balance"
-          required="required"
-          placeholder="Enter balance of liability..."
-          onChange={handleAddFormChange}
-        />
-        
-        <button type="submit">Add</button>
-      </form>
     </div>
+  </div>
   );
 };
 

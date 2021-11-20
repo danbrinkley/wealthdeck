@@ -15,6 +15,7 @@ const EditTable = ({
           placeholder="Enter date liability was created..."
           value={editFormData.date_created}
           onChange={handleEditFormChange}
+          id="edit-input"
         ></input>
       </td>
       <td>
@@ -25,6 +26,7 @@ const EditTable = ({
         placeholder="Enter name of liability..."
           value={editFormData.name}
           onChange={handleEditFormChange}
+          id="edit-input"
         ></input>
       </td>
       <td>
@@ -35,12 +37,20 @@ const EditTable = ({
           placeholder="Enter balance of liability..."
           value={editFormData.balance}
           onChange={handleEditFormChange}
+          id="edit-input"
         />
         </td>
       
       <td>
-        <button type="submit">Save</button>
-        <button type="button" onClick={handleCancelClick}>
+      <button type="submit" 
+        className="formFieldButton"
+        id="save"
+        >Save</button>
+        <button
+          id="cancel" 
+          type="button" 
+          onClick={handleCancelClick}
+          className="formFieldButton">
           Cancel
         </button>
       </td>
