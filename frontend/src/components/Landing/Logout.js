@@ -23,7 +23,7 @@ function Logout () {
 
 
   return (
-    <div className = "col">
+    <div className = "logout">
         <button onClick = {logoutBtn}>Logout</button>
       </div>
   )

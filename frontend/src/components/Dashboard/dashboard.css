@@ -8,15 +8,7 @@
 }
 
 .side-container {
-  background: radial-gradient(
-    circle,
-    rgba(69, 20, 198, 1) 0%,
-    rgba(94, 51, 207, 1) 50%,
-    rgba(94, 51, 207, 1) 99%,
-    rgba(255, 255, 255, 1) 100%,
-    rgba(255, 255, 255, 1) 100%
-  );
-  border-right: 4px solid goldenrod;
+  border-right: 3px solid goldenrod;
   display: flex;
   top: 0;
   bottom: 0;

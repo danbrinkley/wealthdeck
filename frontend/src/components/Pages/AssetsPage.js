@@ -3,24 +3,23 @@ import "./pages.css";
 import Assets from "../Assets";
 import NavBar from "../NavBar";
 import Header from "../Header";
+import AssetTable from "../Assets/AssetTable"
 
 const AssetsPage = () => {
   return (
     <div className="details-body">
-      <div className="details-side-container">
+      <div className="side-container">
         <NavBar />
       </div>
 
-      <div className="details-main-container">
+      <div className="details-header-ctr">
         <Header />
 
-        <div className="details-main-row1-ctr">
+        <div className="details-main-ctr">
           <Assets />
-          <div>Graph and Form will go here</div>
+          <AssetTable />
+          </div>
         </div>
-
-        <div className="details-main-row2-ctr">Table will go here</div>
-      </div>
     </div>
   );
 };

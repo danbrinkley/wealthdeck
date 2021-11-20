@@ -98,7 +98,7 @@ const logoutBtn = () => {
           </SidebarContent>
           <SidebarFooter>
             <Menu iconShape="square">
-              <MenuItem icon={<FiLogOut />} value='Logout' ><button onClick = {logoutBtn} className = "btn btn-primary">Logout</button></MenuItem>
+              <MenuItem active={true} icon={<FiLogOut />} value='Logout' ><button onClick = {logoutBtn} className="logout" id = "logout">Logout</button></MenuItem>
             </Menu>
           </SidebarFooter>
         </ProSidebar>

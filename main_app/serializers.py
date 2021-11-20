@@ -1,21 +1,24 @@
 from rest_framework import serializers
-from .models import Income
+from .models import Income, Debt, Asset, Profile
 from django.contrib.auth.models import User
 from rest_framework.authtoken.views import Token
 
 class IncomeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Income
-        fields = ['id', 'value', 'date']  
+        fields = ['id', 'cashflow', 'date']  
+        
+class DebtSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Debt
+        fields = ['id', 'balance', 'date', 'name']  
+        
+class AssetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Asset
+        fields = ['id', 'value', 'date', 'name']  
 
 
-
-
-
-# class IncomeSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Income
-#         fields = ['id', 'value', 'date']
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -34,16 +37,50 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
-# class IncomeSerializers(serializers.Serializer):
-#     value = serializers.CharField(max_length=100)
-#     date = serializers.CharField(max_length=30)
+class IncomeSerializers(serializers.Serializer):
+    value = serializers.CharField(max_length=100)
+    date = serializers.CharField(max_length=30)
 
 
-#     def create(self, validated_data):
-#         return Income.objects.create(validated_data)
+    def create(self, validated_data):
+        return Income.objects.create(validated_data)
 
-#     def update(self, instance, validated_data):
-#         instance.value = validated_data.get('value', instance.value)
-#         instance.date = validated_data.get('date', instance.date)
-#         instance.save()
-#         return instance
+    def update(self, instance, validated_data):
+        instance.value = validated_data.get('value', instance.value)
+        instance.date = validated_data.get('date', instance.date)
+        instance.save()
+        return instance
+
+class DebtSerializers(serializers.Serializer):
+    balance = serializers.IntegerField()
+    date = serializers.CharField()
+    name = serializers.CharField(max_length=100)
+    
+
+
+    def create(self, validated_data):
+        return Debt.objects.create(validated_data)
+
+    def update(self, instance, validated_data):
+        instance.value = validated_data.get('value', instance.value)
+        instance.date = validated_data.get('date', instance.date)
+        instance.save()
+        return instance
+    
+    
+class AssetSerializers(serializers.Serializer):
+    value = serializers.IntegerField()
+    date = serializers.CharField()
+    name = serializers.CharField(max_length=100)
+    
+
+
+    def create(self, validated_data):
+        return Debt.objects.create(validated_data)
+
+    def update(self, instance, validated_data):
+        instance.value = validated_data.get('value', instance.value)
+        instance.date = validated_data.get('date', instance.date)
+        instance.save()
+        return instance
+
